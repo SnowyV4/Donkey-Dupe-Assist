@@ -13,30 +13,23 @@ const cmdCooldown = 3; //how long it will wait to dupe for after the command. th
 
 let bot
 
-function login() {
-    bot.chat(`/login ${accountPass}`)
-    bot.chat('/8b8t')
-}
 
 function initBot() {
     bot = mineflayer.createBot(OPTIONS);
-    login()
   
     bot.on("end", function () {
       setTimeout(() => {
         initBot();
-        login()
+        bot.dismount()
       }, 6 * 1000);
     });
   }
-
+  initBot()
 async function dupe() {
     await sleep(cmdCooldown * 1000)
     bot.mount(bot.nearestEntity((entity) => entity.name === "donkey"))
     await sleep(4 * 1000)
     bot.quit()
-    await sleep(1 * 1000)
-    bot.dismount(bot.nearestEntity((entity) => entity.name === "donkey"))
 }
 
 async function longdupe() {
@@ -44,11 +37,8 @@ async function longdupe() {
     bot.mount(bot.nearestEntity((entity) => entity.name === "donkey"))
     await sleep(4 * 1000)
     bot.quit()
-    await sleep(1 * 1000)
-    bot.dismount(bot.nearestEntity((entity) => entity.name === "donkey"))
     longdupe()
 }
-initBot()
 
 bot.on('chat', async(username, message) => {
     if(message==='!dupe') {
@@ -58,6 +48,6 @@ bot.on('chat', async(username, message) => {
         longdupedupe()
     }
     if(message==='!dismount') {
-        bot.dismount(bot.nearestEntity((entity) => entity.name === "donkey"))
+        bot.dismount()
     }
 })

@@ -28,9 +28,9 @@ function initBot() {
 async function dupe() {
     await sleep(cmdCooldown * 1000)
     bot.mount(bot.nearestEntity((entity) => entity.name === "donkey"))
-    await sleep(1 * 1000)
+    await sleep(4 * 1000)
     bot.quit()
-    await sleep(1 * 1000)
+    await sleep(5 * 1000)
     bot.dismount(bot.nearestEntity((entity) => entity.name === "donkey"))
 }
 

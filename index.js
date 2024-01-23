@@ -5,7 +5,7 @@ const sleep = promisify(setTimeout)
 const OPTIONS = {
     host: "8b8t.me", //
     username: "D0nkeyDupe", // put in ur cracked account's username
-    port: '2556',
+    port: '25565',
     version: '1.20.1'
 };
 const accountPass = '' // PUT UR ACCOUNT PASSWORD HERE
